@@ -1,0 +1,677 @@
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage{xcolor}
+%\usepackage{sagetex}
+
+\usepackage{euler}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{unicode-math}
+
+
+\usepackage[makeroom]{cancel}
+\usepackage{ulem}
+
+\setlength\parindent{0em}
+\setlength\parskip{0.618em}
+\usepackage[a4paper,lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+\setmainfont[Mapping=tex-text]{Helvetica Neue LT Std 45 Light}
+
+\newcommand\N{\mathbb{N}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\R{\mathbb{R}}
+\newcommand\C{\mathbb{C}}
+\newcommand\A{\mathbb{A}}
+
+\usepackage[thinlines]{easytable}
+\begin{document}
+
+\begin{center}
+  165B --- Review
+
+  RJ Acuña
+
+  (862079740)
+\end{center}\vspace{1.618em}
+
+\paragraph{p.71 \color{blue}(\#10)\color{black}}
+
+(a) Recall (Sec. 5) that if $z = x + iy$, then
+\[x = \frac{z + \bar{z}}{2}\text{ and } y = \frac{z -
+    \bar{z}}{2i}\text{ .}\]
+By \textit{formally} applying the chain rule in calculus to a function
+$\mathbf{F} (x, y)$ of two real
+variables, derive the expression
+\[\frac{\partial{\mathbf{F}}}{\partial{\bar{z}}} =
+  \frac{\partial{\mathbf{F}}}{\partial{x}}\frac{\partial{x}}{\partial{\bar{z}}}
+  + \frac{\partial{\mathbf{F}}}{\partial{y}}
+  \frac{\partial{y}}{\partial{\bar{z}}} = \frac{1}{2}\left(\frac{\partial{\mathbf{F}}}{\partial{x}}
+    + i\frac{\partial{\mathbf{F}}}{\partial{y}}
+  \right)\text{ .}\]
+(b) Define the operator
+\[\frac{\partial}{\partial{\bar{z}}} = \frac{1}{2}\left(
+    \frac{\partial}{\partial{x}}+i\frac{\partial}{\partial{y}}
+  \right)\]
+suggested by part (a), to show that if the first-order partial derivatives of the
+real and imaginary components of a function $f (z) = u(x, y) + iv(x, y)$ satisfy
+the Cauchy–Riemann equations, then
+\[\frac{\partial{f}}{\partial{\bar{z}}} = \frac{1}{2}\left[ (u_x -
+    v_y) +i(v_x + u_y) \right] = 0\]
+Thus derive the \textit{complex form} $\partial{f}/\partial{\bar{z}} =
+0$ \textit{of the Cauchy-Riemann equations.}
+
+\uwave{pf. of (a)}
+
+Notice,
+\[x:\C^2\rightarrow \R; (z,\bar{z})\mapsto
+  \frac{z+\bar{z}}{2}\text{ and } y:\C^2\rightarrow \R; (z,\bar{z})\mapsto
+  \frac{z-\bar{z}}{2i}\]
+
+Then $\mathbf{F}:\R^2\rightarrow \R; (x,y)\mapsto \mathbf{F}(x,y) = \mathbf{F}(x(z,\bar{z}),y(z,\bar{z}))$, so by chain rule we have,
+\[\frac{\partial{\mathbf{F}}}{\partial{\bar{z}}} =
+  \frac{\partial{\mathbf{F}}}{\partial{x}}\frac{\partial{x}}{\partial{\bar{z}}}
+  + \frac{\partial{\mathbf{F}}}{\partial{y}}
+  \frac{\partial{y}}{\partial{\bar{z}}}\]
+Now,
+\[\frac{\partial{x}}{\partial{\bar{z}}} = \frac{1}{2}\text{ and
+  }\frac{\partial{y}}{\partial{\bar{z}}} = -\frac{1}{2i}\]
+Also,
+\[1= -i^2 \implies -\frac{1}{i} = -(-i) = i \implies \frac{\partial{y}}{\partial{\bar{z}}} = \frac{1}{2}i\]
+Plugging in,
+\[\frac{\partial{\mathbf{F}}}{\partial{\bar{z}}} =
+  \frac{\partial{\mathbf{F}}}{\partial{x}}\frac{1}{2}
+  + \frac{\partial{\mathbf{F}}}{\partial{y}}\frac{1}{2}i = \frac{1}{2}\left(\frac{\partial{\mathbf{F}}}{\partial{x}}
+    + i\frac{\partial{\mathbf{F}}}{\partial{y}}
+  \right)\text{ }\blacksquare\]
+\uwave{pf. of (b)}
+
+Let $f = u+iv$. $f$ satisfies the Cauchy-Riemann equations, so
+\[u_x = v_y \text{ and } u_y = -v_x \implies u_x -v_y = 0 \text{ and
+  } u_y + v_x = 0\quad (I)\]
+\begin{align*}
+  \frac{\partial}{\partial{\bar{z}}}f &= \frac{1}{2}\left(
+    \frac{\partial}{\partial{x}}+i\frac{\partial}{\partial{y}}
+                                        \right)(u+iv)
+                                      = \frac{1}{2}\left(
+    \frac{\partial}{\partial{x}}+i\frac{\partial}{\partial{y}}
+                                        \right)u + \frac{1}{2}\left(
+    \frac{\partial}{\partial{x}}+i\frac{\partial}{\partial{y}}
+                                        \right)iv \\
+                                      &= \frac{1}{2}\left(
+    \frac{\partial{u}}{\partial{x}}+i\frac{\partial{u}}{\partial{y}}
+                                        \right) + i\frac{1}{2}\left(
+    \frac{\partial{v}}{\partial{x}}+i\frac{\partial{v}}{\partial{y}}
+                                        \right)
+                                      =\frac{1}{2}\left( u_x +iu_y
+                                        +i(v_x + iv_y) \right)\\
+                                      &= \frac{1}{2}\left( u_x +iu_y
+                                        +iv_x -v_y)\right) =
+                                        \frac{1}{2}\left( u_x - v_y +i(u_y
+                                        +v_x)\right)\\
+                                      &= \frac{1}{2}\left(0
+                                        +i(0)\right) = 0\quad\text{ by
+                                        } (I)\quad\blacksquare
+\end{align*}
+\newpage
+\paragraph{p.77 \color{blue} (\#7)\color{black}}
+
+Let a function $f$ be analytic everywhere in a domain $D$. Prove that
+if $f (z)$ is real-valued for all $z$ in $D$, then $f (z)$ must be
+constant throughout $D$.
+
+\uwave{pf.} Let $D$ be a domain,
+\begin{align*} f \text{ is analytic in } D &\implies \forall z \in
+D,\quad
+                                             u_x = v_y \text{ and } u_y = -v_x \\
+  \forall z \in D, f(z)\in \R &\implies Im(f) = v(x,y) = 0\\
+                                          &\implies v_x = v_y = 0 \\
+                                           & \implies u_x = u_y = 0\\
+  f'(z) = u_x + iu_y &\implies \forall z \in D,\quad f'(z) = 0
+\end{align*}
+Therefore, by the theorem in Section 24, $f$ is constant throughout
+$D\quad \blacksquare$
+
+\paragraph{p.81 \color{blue} (\#7) \color{black}}
+
+Let the function $f (z) = u(x, y) + iv(x, y)$ be analytic in a domain $D$, and consider the
+families of level curves $u(x, y) = c_1$ and $v(x, y) = c_2$ , where $c_1$ and $c_2$ are arbitrary
+real constants. Prove that these families are orthogonal. More precisely, show that if
+$z_0 = (x_0 , y_0)$ is a point in $D$ which is common to two particular curves $u(x, y) = c_1$
+and $v(x, y) = c_2$ and if $f'  (z_0 ) \neq 0$, then the lines tangent to those curves at $(x_0 , y_0)$
+are perpendicular.
+
+\uwave{pf. }
+
+Let $D$ be a domain. Fix, $z_0=(x_0,y_0)\in \C$, and $c_1,c_2\in \R$.
+\begin{align*}
+  f\text{ is analytic in} D &\implies \forall z\in D, \exists f'(z) =
+  u_x+iv_x\\
+  f\text{ is analytic in} D &\implies u_x = v_y\text{ and }u_y = -v_x\\
+  f'(z_0)\neq 0 &\implies u_x(x_0,y_0)\neq0\text{ and }v_x(x_0,y_0)\neq 0\\
+                            &\implies v_y(x_0,y_0)\neq 0\text{ and }-u_y(x_0,y_0) \neq
+                              0\\
+                            &\implies u_y(x_0,y_0)\neq 0
+\end{align*}
+Since, $u$ and $v$ are the components of $f$,
+they're continuously differentiable maps $\R^2\rightarrow \R$. The equations $u(x,y)=c_1$ and $v(x,y)=c_2$, define curves.
+Since, $u_y(x_0,y_0)\neq 0\text{ and }u_y(x_0,y_0)\neq 0\text{.}$
+Then, the level curves $u(x,y)-c_1 = 0$ and $v(x,y)-c_2 = 0$, both
+satisfy the implicit function theorem. Therefore, we can express $y =
+f(x),$ where $f:\R\rightarrow\R$, for each curve. Such
+that, $u(x_0,f_1(x_0))=c_1,$ and $v(x_0,f_2(x_0)) = c_2$, for
+$(x_0,y_0=f_1(x_0) =f_2(x_0))$ common to both curves. Therefore,
+\[\frac{\partial}{\partial{x}}u = \frac{\partial{u}}{\partial{x}}
+  +\frac{\partial{u}}{\partial{y}}\frac{df_1}{dx} = 0 =
+  \frac{\partial}{\partial{x}}c_1\text{ , and similarly } \frac{\partial{v}}{\partial{x}}
+  +\frac{\partial{v}}{\partial{y}}\frac{df_2}{dx} = 0\quad (1)\text{
+    .}\]
+Two curves are orthogonal if the product of their slopes is
+$-1$. Thus,
+\[ \frac{df_1}{dx} =
+  -\frac{\frac{\partial{u}}{\partial{x}}}{\frac{\partial{u}}{\partial{y}}}\text{
+and } \frac{df_2}{dx} =
+  -\frac{\frac{\partial{v}}{\partial{x}}}{\frac{\partial{v}}{\partial{y}}}\]
+Since $f$ is analytic in $D$ containing $z_0$, \[u_x = v_y\text{ and } u_y = -v_x\]
+So, \[ \frac{df_1}{dx}\frac{df_2}{dx} =
+  -\frac{\frac{\partial{u}}{\partial{x}}}{\frac{\partial{u}}{\partial{y}}}
+  \cdot-\frac{\frac{\partial{v}}{\partial{x}}}{\frac{\partial{v}}{\partial{y}}}
+  = \frac{u_xv_x}{u_{y}v_{y}} =\frac{v_{y}v_x}{-v_xv_{y}} = -1 \]
+
+Therefore, the families of functions defined by $u(x,y)=c_1$
+and $v(x,y) = c_2$ are orthogonal $\quad \blacksquare$
+\newpage
+\paragraph{p.92 \color{blue} (\#9)\color{black}}
+
+Show $\overline{\exp(iz)}= \exp(i\bar{z})$ if and only if $z = n\pi$
+($n = 0, \pm 1, \pm 2,\dots$).
+
+\uwave{pf. }
+
+($\implies$) Let $x,y\in \R:$ $z = x+iy$. Suppose $\overline{\exp(iz)} = \exp(i\bar{z})$,
+\begin{align*}
+  iz = -y+ix &\implies \exp(iz) = \exp(-y+ix) = \exp(-y)\exp(ix)\\
+             &\implies \overline{\exp(iz)} =
+               \overline{\exp(-y)\exp(ix)}\\
+             &\implies \overline{\exp(iz)} =
+               \exp(-y)\overline{\exp(ix)}\\
+  &\implies \overline{\exp(iz)} =
+    \exp(-y)(\overline{\cos(x) + i \sin (x)})\\
+  &\implies \overline{\exp(iz)} =
+               \exp(-y)(\cos(x) - i \sin (x))\\
+  i\bar{z} = i(x-iy) = y+ix &\implies \exp(i\bar{z}) = \exp(y+ix) =
+                              \exp(y)\exp(ix)\\
+             &\implies \exp(i\bar{z}) = \exp(y)(\cos(x)+i\sin(x))\\
+  \overline{\exp(iz)}=\exp(i\bar{z}) &\implies \exp(-y)(\cos(x) - i
+                                       \sin (x)) =
+                                       \exp(y)(\cos(x)+i\sin(x))\\
+  &\implies \exp(-y)\cos(x) - i\exp(-y)\sin (x) =
+    \exp(y)\cos(x)+i\exp(y)\sin(x)\\
+  &\implies \exp(-y)\cos(x) = \exp(y)\cos(x)\enskip\text{ and }
+    -\exp(-y)\sin(x) = \exp(y)\sin(x)\\
+  &\implies \cos(x) = \exp(2y)\cos(x)\enskip\text{ and }
+    -\sin(x) = \exp(2y)\sin(x)\\
+  &\implies (1  -\exp(2y))\cos(x)=0 \enskip\text{ and }
+    (-1 -\exp(2y))\sin(x) = 0\\
+  -1 -\exp(2y) = 0 &\implies -1 = \exp(2y)\\
+  2y \in \R &\implies \exp(2y) > 0\\
+             &\implies -1-\exp(2y)\neq 0\\
+             &\implies \sin(x) = 0 \implies x = n\pi,\enskip n\in \Z\\
+  x=n\pi, n\in\Z &\implies \cos(x) = \pm 1\\
+             &\implies (1-\exp(2y))\pm 1 = 0\\
+             &\implies 1-exp(2y)= 0\\
+             &\implies \exp(2y) = 1\\
+             &\implies 2y = 0\\
+  2\neq 0 &\implies y=0\\
+  &\implies z = n\pi, (n = 0,\pm 1,\pm 2,\dots)
+\end{align*}
+($\impliedby$) Suppose, $z = n\pi, (n = 0,\pm 1,\pm 2, \dots)$,
+\[\overline{\exp(iz)} = \overline{\exp(n\pi i)}=
+  \overline{\cos(n\pi)+i\sin(n\pi)}= \cos(n\pi)-i sin(n\pi) =
+  \cos(n\pi) -0i = \cos(n\pi)\]
+\[z = n\pi \implies \bar{z} = n\pi \implies i\bar{z} = n\pi \implies
+  \exp(i\bar{z}) = \cos(n\pi) +i\sin(n\pi) = \cos(n\pi)+0i =
+  \cos(n\pi)\]
+So,
+\[\overline{\exp(iz)} = \exp(i\bar{z})\]
+
+The conclusion follows $\quad\blacksquare$
+\newpage
+\paragraph{p.97 \color{blue} (\# 9)\color{black}}
+
+Show that
+
+(a) the function $f(z) = \text{Log}(z-i)$ is analytic everywhere
+except on the portion $x\leq 0$ of the line $y = 1$;
+
+(b) the function\[f(z) = \frac{\text{Log}(z+4)}{z^2 + i}\] is analytic
+everywhere except at the points $\pm(1-i)/\sqrt{2}$ and on the portion
+$x\leq -4$ of the real axis.
+\vspace{1.618em}
+
+\uwave{slu. of (a)}
+
+Consider the function $t:\C\rightarrow\C; z\mapsto z-i$, at glance we
+can see that $f = \text{Log}\circ t$. We know that $\text{Log}$ is
+analytic on the portion $x\leq 0$ of the $x-$axis. Therefore, since
+$t^{-1}(\{0\}) = 0+1i$, $f$ must be analytic on the portion $x\leq 0$
+of the line $y = 1\quad \blacklozenge$
+\vspace{1.618em}
+
+\uwave{slu. of (b)}
+
+Consider the function $t:\C\rightarrow\C; z\mapsto z+4$, let $ g =
+\text{Log}\circ t$. We know that $\text{Log}$ is
+analytic on the portion $x\leq 0$ of the $x-$axis. Therefore, since
+$t^{-1}(\{0\}) = -4+0i$, $g$ must be analytic on the portion $x\leq -4$
+of the $x-$axis.
+
+Since the function $h(z) = \frac{1}{z^2 +i}$ is a rational function,
+it is analytic whenever the denominator is not zero. Furthermore, it
+fails to be analytic precisely where the denominator is zero.
+\begin{align*} z^2 +i = 0 &\implies z = \pm\sqrt{-i}\\
+                          &\implies z =
+                            \pm\sqrt{\exp\left(\frac{3\pi
+                            i}{2}\right)}\\
+  &\implies z =
+                            \pm\exp\left(\frac{3\pi
+    i}{4}\right)\\
+  &\implies z =
+    \pm\left[\cos\left(\frac{3\pi
+    i}{4}\right) +i \sin\left(\frac{3\pi
+    i}{4}\right)\right]\\
+  &\implies z =
+    \pm\left[-\frac{1}{\sqrt{2}}+ i \frac{1}{\sqrt{2}}\right]\\
+  &\implies z = \pm(1-i)/\sqrt{2}\\
+\end{align*}
+Since, $f = gh$ it is not analytic where $g$ or $h$ are not
+analytic the conclusion follows $\quad \blacklozenge$
+\newpage
+\paragraph{p.108 \color{blue}(\#16)\color{black}}
+
+With the aid of expression (14), Sec. 34, show that the roots of the equation $\cos z = 2$
+are
+\[z = 2n\pi +i\cosh^{-1}(2)\quad (n = 0,\pm 1,\pm 2,\dots)\]
+Then express them in the form
+\[z = 2n\pi \pm i\ln(2+\sqrt{3})\quad (n = 0,\pm 1,\pm 2,\dots)\]
+
+\uwave{slu.}
+
+Let $x,y \in \R: z= x+iy$.
+
+By expression (14) in Section 34,
+\[\cos(z) = \cos(x) \cosh(y) − i \sin(x)\sinh(y) = 2\]
+
+Now, if $\Re(z) \neq 2n\pi$, then $\sin(x)\neq 0 \implies
+\Im(\cos(z))\neq 0$ since $\forall y\in\R, \sinh(y)\neq 0$.
+
+So, $\Im(2) = 0 \implies \Re(z) = 2n\pi$, which forces $\cos(\Re(z)) =1$. Which
+is required because \[2\geq 1\text{ and }\forall x\in \R, -1\leq \cos(x)\leq
+1.\] Thus $\Im(z)$ must be such that,
+$\cosh(\Im(z)) = 2$, i.e: $\Im(z) = \cosh^{-1}(2)$.
+
+So, $z = 2n\pi +i\cosh^{-1}(2)\quad (n = 0,\pm 1,\pm 2,\dots)$.
+
+Remains to show that, \[\cosh^{-1}(2) = \pm\ln(2+\sqrt{3})\]
+
+$\cosh(\pm\ln(2+\sqrt{3})) = \frac{e^{\pm\ln(2+\sqrt{3})} +
+  e^{-\pm\ln(2+\sqrt{3})}}{2}  = \frac{(2+\sqrt{3})^{\pm 1}
+  +(2+\sqrt{3})^{\mp 1}}{2}$
+
+So, \[\cosh(\ln(2+\sqrt{3})) = \frac{(2+\sqrt{3})
+  +(2+\sqrt{3})^{-1}}{2} =  \frac{(2+\sqrt{3})^{-1}
+  +(2+\sqrt{3})}{2} = \cosh(-\ln(2+\sqrt{3}))\]
+
+Finally we need, \[\frac{(2+\sqrt{3})
+    +(2+\sqrt{3})^{-1}}{2} = 2\]
+
+$\frac{(2+\sqrt{3})
+  +(2+\sqrt{3})^{-1}}{2} = 1 + \frac{\sqrt{3}}{2} +
+\frac{1}{(2+\sqrt{3})2} = 1 +
+\frac{(2+\sqrt{3})\sqrt{3}+1}{(2+\sqrt{3})2} = 1 +
+\frac{2\sqrt{3}+3+1}{(2+\sqrt{3})2} =
+1+\frac{4+2\sqrt{3}}{4+2\sqrt{3}} = 1+1 = 2$
+
+So, $z = 2n\pi \pm i\ln(2+\sqrt{3})\quad (n = 0,\pm 1, \pm 2,\dots)
+\quad \blacklozenge$
+\newpage
+\paragraph{\color{blue} p.126 (\#5)\color{black}}
+
+Suppose that a function $f(z)$ is analytic at a point $z_0 = z(t_0)$
+lying on a smooth arc $z = z(t) (a \leq t\leq b).$ Show that if $w(t)
+= f(z(t))$, then
+\[ w'(t) = f'[z(t)]z'(t)\]
+when $t = t_0.$
+
+\uwave{pf. }
+\begin{align*} w'(t) &= \lim_{t\rightarrow t_0}\frac{w(t) -
+                       w(t_0)}{t-t0}\\
+                     &= \lim_{t\rightarrow t_0}\frac{f(z(t)) -
+                       f(z(t_0))}{t-t_0}\\
+  z\text{ is a smooth arc} &\implies\forall t\in (a,b), \exists
+                             z'(t)\\
+                     &\implies 1 = \frac{z'(t)}{z'(t)}\\
+  \text{ limit laws }&\implies 1 = \frac{\lim_{t\rightarrow t_0}
+                       \frac{z(t)-z(t_0)}{t-t_0}}{\lim_{t\rightarrow
+                       t_0} \frac{z(t)-z(t_0)}{t-t_0}} = \lim_{t\rightarrow t_0}
+                       \frac{z(t)-z(t_0)}{z(t)-z(t_0)}\\
+\end{align*}
+So,
+\begin{align*}
+  w'(t) &= \lim_{t\rightarrow t_0}\frac{f(z(t)) -
+                       f(z(t_0))}{t-t_0}\cdot\lim_{t\rightarrow t_0}
+                       \frac{z(t)-z(t_0)}{z(t)-z(t_0)} \\ &=\lim_{t\rightarrow t_0}\frac{f(z(t)) -
+                       f(z(t_0))}{z(t)-z(t_0)}\cdot\lim_{t\rightarrow t_0}
+                       \frac{z(t)-z(t_0)}{t-t_0}\\ &= \lim_{t\rightarrow t_0}\frac{f(z(t)) -
+                                                     f(z(t_0))}{z(t)-z(t_0)}\cdot z'(t_0)
+\end{align*}
+
+$\forall t\in (a,b), \exists z'(t) \implies z$ is continuous on $[a,b]
+\implies z(t)\rightarrow z(t_0)$ as $t\rightarrow t_0.$
+
+Since $z = z(t)$ and $z_0 = z(t_0)$,
+\[\lim_{t\rightarrow t_0}\frac{f(z(t)) -
+                                                     f(z(t_0))}{z(t)-z(t_0)}
+                                                   = \lim_{z(t)\rightarrow z(t_0)}\frac{f(z(t)) -
+                                                     f(z(t_0))}{z(t)-z(t_0)}
+                                                   = f'(z(t_0)) = f'(z_0)\]
+                                                 Finally,\[ w'(t) =
+                                                   f'[z(t)]z'(t)\]
+                                                 when $t = t_0\quad \blacksquare$
+\paragraph{p.135 \color{blue}(\#11)\color{black}}
+
+(a) Suppose that a function $f (z)$ is continuous on a smooth arc $C$, which has a
+parametric representation $z = z(t) (a ≤ t ≤ b)$; that is, $f [z(t)]$ is continuous on
+the interval $a ≤ t ≤ b$. Show that if $\phi(\tau ) (\alpha \leq \tau
+\leq \beta)$ is the function described in Sec. 39, then
+\[\int_a^b f[z(t)]z'(t)dt = \int_\alpha^\beta f[Z(\tau)]Z'(\tau)d\tau\]
+ where $Z(\tau) = z[\phi(\tau )]$.
+
+\uwave{pf. of (a)}
+
+$\alpha = \phi(a),$ and $\beta = \phi(b)$
+\begin{align*}
+  \int_a^b f[z(t)]z'(t)dt &= \int_\alpha^\beta
+                            f[z(\phi(\tau))]z'(\phi(\tau))d\phi(\tau)
+                            = \int_\alpha^\beta
+                            f[Z(\tau)]Z'(\tau)d\tau \quad \blacksquare
+\end{align*}
+
+(b) Point out how it follows that the identity obtained in part (a) remains valid when
+$C$ is any contour, not necessarily a smooth one, and $f (z)$ is piecewise continuous
+on $C$. Thus show that the value of the integral of $f (z)$ along $C$ is the same when
+the representation $z = Z(\tau ) (\alpha \leq \tau \leq \beta)$ is used, instead of the original one.
+
+\uwave{pf. of (b)} Notice, that the integral of a contour is the sum
+of the integrals along the smooth arcs that make up the contour, thus
+the result follows.$\quad \blacksquare$
+
+\paragraph{p.140 \color{blue}(\#6)\color{black}}
+ Let $C_\rho$ denote a circle $|z| = \rho (0 < ρ < 1)$, oriented in the counterclockwise direction,
+and suppose that $f (z)$ is analytic in the disk $|z| ≤ 1$. Show that if $z^{-1/2}$ represents
+any particular branch of that power of $z$, then there is a nonnegative constant $M$,
+\textit{independent} of $\rho$, such that
+
+\[\left| \int_{C_\rho} z^{-1/2} f(z) dz \right|\leq 2\pi M\sqrt{\rho}\]
+
+Thus show that the value of the integral here approaches $0$ as $ρ$
+tends to $0$.
+
+\uwave{pf.}
+
+$f$ is analytic in the disk $|z|\leq 1$, then $|f|$ is bounded by a
+positive number $M$ independent of $\rho.$ So,
+\[|z^{-1/2}f(z)| = |z|^{-1/2}|f(z)| \leq \frac{M}{\sqrt{\rho}}\]
+\[\implies \left|\int_{C_\rho }z^{-1/2}f(z)\right| \leq
+  \frac{M}{\sqrt{\rho}}2\pi \rho = 2\pi M\sqrt{\rho}\]
+
+Thus, the integral goes to zero as $\rho$ goes to zero $\quad \blacksquare$
+
+
+\paragraph{p.160 \color{blue}(\#6)\color{black}}
+
+Let $C$ denote the positively oriented boundary of the half disk$ 0
+\leq r \leq 1, 0 \leq  θ \leq \pi$ ,
+and let $f (z)$ be a continuous function defined on that half disk by writing $f (0) = 0$
+and using the branch
+\[f(z) = \sqrt{r} e^{i\theta/2}\quad \left( r> 0, -\frac{\pi}{2} <
+    \theta <\frac{3\pi}{2} \right)\]
+ Show that
+
+ \[\int_C f (z) dz = 0\]
+
+by evaluating separately the integrals of $f (z)$ over the semicircle and the two radii
+which make up $C$. Why does the Cauchy–Goursat theorem not apply here?
+
+\paragraph{p.170 (\#2)}
+
+Find the value of the integral of $g(z)$ around the circle $|z − i| = 2$ in the positive sense
+when
+
+(a) $g(z) =\frac{1}{z^2+4}$;\hspace{0.618em}
+(b) $g(z) = \frac{1}{(z^2 + 4)^2}.$
+
+\uwave{slu. of (a)}
+
+\[z^2+4 = 0 \implies z = \pm 2 i\]
+\[g(z) =\frac{1}{z^2+4} \implies g(z) = \frac{1}{(z-2i)(z+2i)} = \frac{\frac{1}{z+2i}}{z-2i}\]
+\[|2i-i| = |i| = 1 < 2 \implies 2i \text{ is inside the circle }|z -
+  i| =2\]
+Let $C$ be the circle $|z - i| =2$,
+\[\text{Let } f(z) =  \frac{1}{z+2i} \implies  2\pi if(2i) = \int_C
+  \frac{f(z)}{z-2i} dz \text{ by the Cauchy integral formula.}\]
+Then,\[\int_C g(z) dz = 2\pi i\frac{1}{2i+2i}= \frac{\pi}{2}\quad
+  \lozenge\]
+
+\uwave{slu. of (b)}
+
+With $f$ and $C$ as in slu. of (a). Let $h(z) = f(z)^2$,
+\[k(z) = \frac{1}{(z^2+4)^2} = \frac{1}{[(z+2i)(z-2i)]^2}= \frac{1}{(z+2i)^2(z-2i)^2} =  \frac{(f(z))^2}{(z-2i)^2} = \frac{h(z)}{(z-2i)^2}\]
+So by formula (6) in Section 51 we have,
+\[\int_C  \frac{1}{(z^2+4)^2} dz = \frac{2\pi i}{1!}h'(2i)\]
+\[h'(2i) = 2\frac{1}{z+2i}(-\frac{1}{(z+2i)^2})|_{2i} =
+  -\frac{2}{(4i)^3} = -\frac{2}{4\cdot 16\cdot-i}= \frac{1}{32i}\]
+So, \[\int_C  \frac{1}{(z^2+4)^2} dz = \frac{2\pi i}{32i} =
+  \frac{\pi}{16}\quad \lozenge\]
+
+\paragraph{p.170 \color{blue} (\#10)\color{black}}
+
+Let $f$ be an entire function such that $|f (z)| ≤ A|z|$ for all $z$, where $A$ is a fixed
+positive number. Show that $f (z) = a_1 z$, where $a_1$ is a complex constant.
+
+\uwave{pf. }
+
+$$|f^{(n)}(z)| \leq \frac{n!M_R}{R^n} \implies |f^{(2)}(z)| \leq
+\frac{2M_R}{R^2} \leq \frac{2A(|z|+R)}{R^2} \forall z\in \C$$
+
+Since $f$ is entire, then the radius $R$ where it is analytic is
+arbitrarily large. So let $R\rightarrow \infty$, gives the right hand
+side of the last inequality is zero.
+
+$$|f^{(2)}(z_0)| \leq 0 \implies f^{(2)}(z) = 0\quad \forall z\in \C
+\implies \exists a_1,a_2 \in \C : f(z) = a_1z +a_2$$
+
+But, $|f|\leq A|z|\quad \forall z\in \C \implies a_2 = 0 \implies f(z) =
+a_1z \quad \blacksquare$
+
+\paragraph{p.178 \color{blue} (\#9)\color{black}}
+
+Let $z_0$ be a zero of the polynomial\[P(z) = a_0 + a_1z + a_2z^2 +
+  \cdots + a_nz^n\quad (a_n \neq 0)\]
+
+of degree $n (n\geq 1)$. Show in the following way that \[P(z) =
+  (z-z_0)Q(z)\] where $Q(z)$ is a polynomial of degree $n-1$.
+
+(a) Verify that \[z^k-z_0^k = (z-z_0)(z^{k-1}+z^{k-2}z_0+\cdots +
+  zz_0^{k-2}+z_0^{k-1})\quad (k = 2,3,\cdots)\]
+
+\uwave{pf. of (a)}
+
+The geometric progression has the property,
+\begin{align*}
+   \sum_{i = 0}^{k-1}w^i =
+   \frac{1-w^k}{1-w}&\implies 1-w^k = (1-w)\sum_{i = 0}^{k-1}w^i\\
+   \text{Let } w = \frac{z_0}{z}&\implies 1-{\frac{z_0}{z}}^k =
+                                  (1-\frac{z_0}{z})\sum_{i =
+                                  0}^{k-1}\left(\frac{z_0}{z}\right)^i\\
+   &\implies z^k-z_0^k = z(1-\frac{z_0}{z})z^{k-1}\sum_{i =
+     0}^{k-1}\left(\frac{z_0}{z}\right)^i\\
+   &\implies z^k-z_0^k = (z-z_0)\sum_{i = 0}^{k-1} z^{k-1-i}z_0^i\quad
+     (k = 2,3,\dots) \quad \blacksquare
+\end{align*}
+
+
+(b) Use the factorization in part (a) to show that \[ P(z)-P(z_0) =
+(z-z_0)Q(z)\]
+where $Q(z)$ is a polynomial of degree $n − 1$, and deduce the desired result from
+this.
+
+\uwave{pf. of (b)}
+\[P(z) = \sum_{k = 0}^n a_nz^n\text{ and } P(z_0) = \sum_{k = 0}^n
+  a_nz_0^n\]
+Therefore,
+\begin{align*} P(z)-P(z_0) &= \sum_{k = 0}^n a_k(z^k - z_0^k)\\ &=
+  a_0(z^0-z_0^0)+a_1(z-z_0) + \sum_{k =
+    2}^n a_k(z^k-z_0^k)\\ &= a_0(1-1)+a_1(z-z_0)+\sum_{k =
+    2}^n a_k(z^k-z_0^k)\\ &= a_1(z-z_0) + \sum_{k =
+                            2}^n
+                            a_k(z-z_0)\sum_{i=0}^{k-1}z^{k-1-i}z_0^i\\
+  &= (z-z_0)[a_1+\sum_{k = 2}^n
+                            a_k\sum_{i=0}^{k-1}z^{k-1-i}z_0^i]\\
+\end{align*}
+
+Then, $Q(z) = a_1+\sum_{k = 2}^n a_k\sum_{i=0}^{k-1}z^{k-1-i}z_0^i$ the
+degree of $Q$ is the largest power of
+$z$ in $Q$. This happens when $k = n$, and $i =
+0$. Therefore, the degree of $Q$ is $n-1$,
+since $a_n \neq 0$.
+
+Since, $z_0$ is a zero of $P$, so $P(z_0) =
+0$.  The result
+follows, \[P(z) = (z-z_0)Q(z)\] where $Q$
+is a polynomial of degree $n-1\quad
+\blacksquare$
+
+\paragraph{p.188 \color{blue}(\# 9)\color{black}}
+
+Let a sequence $z_n\quad (n = 1, 2, . . .)$ converge to a number $z$. Show that there exists a
+positive number $M$ such that the inequality $|z_n| ≤ M$ holds for all $n$. Do this in each
+of the following ways.
+
+(a) Note that there is a positive integer $n_0$ such that
+\[|z_n| = |z+(z_n -z)|\leq |z|+1\]
+whenever $n> n_0.$
+
+(b)Write $z_n = x_n + iy_n$ and recall from the theory of sequences of real numbers that
+the convergence of $x_n$ and $y_n$ $(n = 1, 2, \dots)$ implies that $|x_n| ≤ M_1$ and $|y_n| ≤ M_2
+$ $(n = 1, 2, \dots)$ for some positive numbers $M_1$ and $M_2$.
+
+\uwave{pf. by method (a)}
+
+$z_n\rightarrow z$ as $n\rightarrow \infty \implies \forall
+\varepsilon \geq 0, \exists N\in \N: n> N \implies
+|z-z_n| <\varepsilon$.
+
+Put $\varepsilon = 1.$ Then, by reverse triangle inequality,
+
+\[||z|-|z_n||<|z-z_n| < 1 \implies -1 <  |z| - |z_n|  \implies |z_n|<
+  |z| + 1\]
+
+Let $M = \max\{|z_0|,\dots,|z_N|,|z|+1\}$, since $|z_n|\geq 0\text{ and
+}|z|+1 >0 \implies M > 0$
+
+So, $|z_n| \leq M$ holds for all $n \quad \blacksquare$
+
+\uwave{pf. by method (b)}
+
+Let $z_n = x_n+iy_n$ and $M = M_1+M_1$, and $x_n,y_n$ convergent real sequences such that $|x_n|\leq M_1$ and
+$|y_n|\leq M_2$ for all $n$.Then,
+
+$|z_n| = |x_n+iy_n| \leq |x_n|+ |iy_n| = |x_n|+|i||y_n| =
+|x_n|+|y_n|\leq M_1+M_2 = M$ holds for all $n \quad \blacksquare$
+
+\paragraph{p.195 \color{blue}(\#13)\color{black}}
+
+Show that when $0 < |z| < 4$\[\frac{1}{4z-z^2} = \frac{1}{4z} +
+  \sum_{n=0}^\infty \frac{z^n}{4^{n+2}}\]
+
+\uwave{slu. }
+Let $z\in \C:$$0<|z|<4 \implies z\neq 0 \implies \exists \frac{1}{z}:
+z\frac{1}{z} = 1$
+
+Furthermore, $0 < \left|\frac{z}{4}\right|<1$, so we can write,
+
+\[\frac{1}{4z-z^2} = \frac{1}{4(z -\frac{z^2}{4})} =
+  \frac{\frac{1}{4}}{z(1-\frac{z}{4})} =
+  \frac{1}{4z}\frac{1}{1-\frac{z}{4}} = \frac{1}{4z}\sum_{k =
+    0}^\infty \left(  \frac{z}{4}\right)^k =  \sum_{k =
+    0}^\infty \frac{z^{k-1}}{4^{k+1}} =
+  \frac{1}{4z}+\sum_{k=1}^\infty \frac{z^{k-1}}{4^{k+1}}\]
+
+Let $n = k-1 \implies n+2 = k+1$ and if $k = 1$, then $n = 0$. Thus,
+\[\frac{1}{4z-z^2} = \frac{1}{4z} +
+  \sum_{n=0}^\infty \frac{z^n}{4^{n+2}}\quad \blacklozenge\]
+
+\paragraph{p.205 \color{blue}(\# 8)\color{black}}
+(a) Let $a$ denote a real number, where $−1 < a < 1$, and derive the Laurent series
+representation
+\[\frac{a}{z-a} =\sum_{n = 1}^\infty \frac{a^n}{z^n}\quad
+  (|a|<|z|<\infty)\]
+
+\uwave{pf. of (a)}
+$|a|<|z|<\infty \implies 0 < \left| \frac{a}{z} \right|<1$
+
+\[\implies \frac{a}{z-a} = \frac{a}{z}\frac{1}{1-\frac{a}{z}} =
+\frac{a}{z}\sum_{k=0}^{\infty} \left( \frac{a}{z} \right)^k =
+\sum_{k=0}^{\infty} \left( \frac{a}{z} \right)^{k+1}\]
+
+Let $n = k+1$, when $k = 0, n = 1$. Thus,
+\[\frac{a}{z-a} =\sum_{n = 1}^\infty \frac{a^n}{z^n}\quad
+  (|a|<|z|<\infty)\]
+
+
+(b) After writing $z = e^{i\theta}$ in the equation obtained in part (a), equate real parts and
+then imaginary parts on each side of the result to derive the summation formulas
+\[\sum_{n = 1}^\infty a^n\cos(n\theta) =
+  \frac{a\cos(\theta)-a^2}{1-2a\cos(\theta)+a^2} \text{ and }\sum_{n = 1}^\infty a^n\sin(n\theta) = \frac{a\sin(\theta)}{1-2a\cos(\theta)+a^2}\]
+where $-1<a<1$.
+
+\uwave{pf. of (b)}
+Let $z = e^{i\theta}$ then,
+
+\begin{align*} \frac{a}{e^{i\theta} - a} &= \frac{a}{\cos(\theta) + i\sin(\theta)
+    -a} \\ &= \frac{a}{\cos(\theta) - a + i\sin(\theta)} \\ &= \frac{a}{\cos(\theta) + i\sin(theta)
+    -a}\\ &= \frac{a}{\cos(\theta) - a + i\sin(\theta)}\frac{\cos(\theta)
+    -a - i\sin(theta)}{\cos(\theta) - a - i\sin(\theta)}\\ &=
+    \frac{a\cos(\theta)-a^2 -i a\sin(\theta)}{\cos^2(\theta)-2a\cos(\theta) +a^2 +
+      \sin^2(\theta)}\\ &= \frac{a\cos(\theta) -a^2 -
+                          ia\sin(\theta)}{1-2a\cos(\theta)+a^2}\\
+  &= \frac{a\cos(\theta) -a^2}{1-2a\cos(\theta)+a^2} -i
+                          \frac{a\sin(\theta)}{1-2a\cos(\theta)+a^2}\\
+\sum_{n=1}^\infty \left(\frac{a}{e^{i\theta}}\right)^n &= \sum_{n=1}^\infty \frac{a^n}{e^{n\theta}}\\
+  &= \sum_{n=1}^\infty a^ne^{-n\theta}\\
+                                         &= \sum_{n=1}^\infty a^n(\cos(n\theta)-i\sin(n\theta))\\
+                                         &= \sum_{n=1}^\infty
+                                           a^n\cos(n\theta)-a^ni\sin(n\theta)\\
+  &= \sum_{n=1}^\infty
+                                           a^n\cos(n\theta)
+    -i\sum_{n=1}^\infty a^n\sin(n\theta)
+\end{align*}
+
+By equating the real and imaginary parts the result follows$\quad
+\blacksquare$
+
+\paragraph{p.219 \color{blue}(\# 7)\color{black}}
+
+Use the result in Exercise 6 to show that if
+\[f(z) = \frac{\text{Log}(z)}{z-1}\text{ when }(z\neq 1)\]
+and $f(1)=1 $, then $f$ is analytic throughout the domain
+\[0<|z|<\infty, -\pi <\text{Arg}(z)<\pi\]
+\end{document}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,531 @@
+\documentclass{article}
+\usepackage{fontspec}
+
+% Used to embed Sage code in latex
+\usepackage{sagetex}
+
+% Math Environment
+\usepackage{euler}        % Euler font
+\usepackage{amsmath}      % Math macros
+\usepackage{amssymb}      % Math symbols
+\usepackage{unicode-math} % Unicode support
+
+
+\usepackage[makeroom]{cancel} % Used to cancel terms in algebraic equations
+\usepackage{ulem} % Different underline environments
+\usepackage{polynom} %Polynomial long division
+
+% Typesetting Rules
+\setlength\parindent{0em}
+\setlength\parskip{0.618em}
+\usepackage[a4paper,lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+\setmainfont[Mapping=tex-text]{Helvetica Neue LT Std 45 Light}
+
+% Common Macros
+\newcommand\N{\mathbb{N}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\R{\mathbb{R}}
+\newcommand\C{\mathbb{C}}
+\newcommand\A{\mathbb{A}}
+\def\res{\mathop{\text{Res}}\limits}
+
+% Color
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pagecolor}
+\definecolor{DeepCyan}{HTML}{006969}
+\definecolor{DeepRed}{HTML}{690000}
+\pagecolor{DeepCyan}
+\color{Goldenrod}
+
+\begin{document}
+
+\begin{center}
+  165B --- Midterm Exam
+
+  RJ Acuña
+
+  (862079740)
+\end{center}\vspace{1.618em}
+
+\subsubsection*{Problem 1} In each case, write the principal part of the function at its isolated singular point and determine
+whether that point is a pole, a removable singular point, or an
+essential singular point:
+
+(a) $\exp\left(\frac{1}{z^2}\right)$
+
+\uwave{slu.}
+
+$\exp\left(\frac{1}{z^2}\right)$ has an isolated singular point at $0$, we will
+see why from it's series expansion about $0$.
+
+We know that, $\exp(z) = \sum_{n=0}^\infty \frac{z^n}{n!}$. Thus,
+
+\[\exp\left(\frac{1}{z^2}\right) = \sum_{n=0}^\infty \frac{\left(
+    \frac{1}{z^2}\right)^n}{n!} = \sum_{n=0}^\infty \frac{1}{n!z^{2n}}
+=1 +\sum_{n=1}^\infty \frac{1}{n!z^{2n}}\]
+
+The principal part is then, \[\sum_{n=1}^\infty \frac{1}{n!z^{2n}}\]
+
+Since the principal part has infinitely many non-zero coefficients. It
+follows that, $0$ is an essential singularity of
+$\exp\left(\frac{1}{z^2}\right)\quad \blacklozenge$
+
+(b) $\frac{z^3}{1-z}$
+
+We can see that $\frac{z^3}{1-z}$ is not analytic at $z=1$. Then we
+perform polynomial long division,
+
+\begin{minipage}{.35\textwidth}
+\polyset{vars=z}
+\polylongdiv[style = A]{z^3}{1-z}
+\end{minipage}
+\begin{minipage}{.65\textwidth}
+  And we can conclude that,
+  \[\frac{z^3}{1-z} = -z^2-z-1 + \frac{1}{1-z}\]
+  So the principal part is, \[\frac{1}{1-z}\]
+
+  So $1$ is a simple pole $\quad \blacklozenge$
+\end{minipage}
+
+(c) $\frac{\sin 2z}{z}$
+
+
+\uwave{slu.}
+
+\[\frac{\sin 2z}{z} = \frac{1}{z}\sum_{n=0}^\infty
+\frac{(-1)^n(2z)^{2n+1}}{(2n+1)!} = \sum_{n=0}^\infty
+\frac{(-1)^n2^{2n+1}z^{2n}}{(2n+1)!}\]
+
+Since $\sin 2z$ is analytic, but $\frac{1}{z}$ is not analytic at
+$0$. $0$ is the isolated singular point of $\frac{\sin 2z}{z}$, then
+we compute the following expansion.
+
+\[\frac{\sin 2z}{z} = \frac{1}{z}\sum_{n=0}^\infty
+\frac{(-1)^n(2z)^{2n+1}}{(2n+1)!} = \sum_{n=0}^\infty
+\frac{(-1)^n2^{2n+1}z^{2n}}{(2n+1)!}\]
+
+Thus, the principal part is $0$, therefore $0$ is a removable
+singularity of $\frac{\sin 2z}{z}\quad \lozenge$
+\newpage
+(d) $\frac{\cos z -1}{z^2}$
+
+\uwave{slu.}
+
+$\cos z -1$ is analytic, but but $\frac{1}{z^2}$ is not analytic at
+$0$. $0$ is the isolated singular point of $\frac{\cos z -1}{z^2}$, then
+we compute the following expansion.
+
+\[\frac{\cos z -1}{z} = \frac{1}{z^2}\left( \sum_{n=0}^\infty
+\frac{(-1)^nz^{2n}}{(2n)!} -1\right) = \frac{1}{z^2}\left( 1+ \sum_{n=1}^\infty
+\frac{(-1)^nz^{2n}}{(2n)!} -1\right) = \frac{1}{z^2}\left(\sum_{n=1}^\infty
+\frac{(-1)^nz^{2n}}{(2n)!}\right) = \sum_{n=1}^\infty
+\frac{(-1)^nz^{2n-2}}{(2n)!}\]
+
+Since there are no negative powers, the principal part is $0$, therefore $0$ is a removable
+singularity of $\frac{\cos z -1}{z^2}\quad \lozenge$
+
+(e) $\frac{1}{(1-z)^3}$
+
+\uwave{slu.}
+Since it's already in it's Laurent series representation we can see
+that $1$ is a pole of order $3$ of $\frac{1}{(1-z)^3}\quad \lozenge$
+
+\subsubsection*{Problem 2} Find
+
+(a) The residue of $f_1(z) = \frac{\pi}{z-z^2}$ at $z=0$
+
+\uwave{slu. } $f_1(z) = \frac{\pi}{z(1-z)} = \frac{\frac{\pi}{1-z}}{z}
+\implies \res_{z=0}f_1(z) = \frac{pi}{1-0} = \pi\quad \lozenge$
+
+(b) The residue of $f_2(z) = z\cos\left( \frac{1}{z} \right)$ at $z=0$
+
+\uwave{slu.}
+\[f_2(z) = z\cos\left( \frac{1}{z} \right) = z\sum_{n=0}^{\infty}
+  \frac{(-1)^n\left( \frac{1}{z} \right)^{2n}}{(2n)!}  = z\sum_{n=0}^{\infty}
+  \frac{(-1)^n}{(2n)!z^{2n}}= \sum_{n=0}^{\infty}
+  \frac{(-1)^n}{(2n)!z^{2n-1}}\]
+\[\implies f_2(z) =\frac{(-1)^0}{0! z^{-1}} + \frac{(-1)^1}{2! z^{2-1}}+ \sum_{n=}^{\infty}
+  \frac{(-1)^n}{(2n)!z^{2n-1}} = z - \frac{1}{2z}+ \sum_{n=}^{\infty}
+  \frac{(-1)^n}{(2n)!z^{2n-1}}\]
+\[\implies \res_{z=0}f_2(z) = -\frac{1}{2} \quad \blacklozenge\]
+
+(c) The residue of $f_3 (z) = \frac{z−\sin z }{2z}$ at $z = 0$
+
+\uwave{slu.} $f_3(z) = \frac{z-\sin z}{2z} = \frac{\frac{z-\sin
+    z}{2}}{z}$, since $\frac{z-\sin z}{2}$ is analytic at $0\implies
+\res_{z=0}f_3(z) = \frac{0-\sin 0}{2}= 0\quad \lozenge$
+
+(d) A function $f_4$ with a simple pole at $z = 0$ such that the
+residue of $f_4$ at $z = 0 $ is $ π$.
+
+\uwave{slu.} $f_4(z) = \frac{\pi}{z}\quad \lozenge$
+
+(d) A function $f_5$ with a pole  of order $3$ at $z = 0$ such that the
+residue of $f_5$ at $z = 0 $ is $17$.
+
+\uwave{slu.} $f_5(z) = \frac{17}{z} +\frac{27891}{z^3}\quad \lozenge$
+\newpage
+
+\newpage
+\subsubsection*{Problem 3} Consider the integral \[\int_C
+  \frac{2z^3+3}{(z+1)(z^2 +4)} dz\] taken counterclockwise around the
+curve $C$
+
+(a) Find the value of the integral when the curve $C$ is the circle
+${\color{green}|z + 1| = 2}$
+
+\uwave{slu.}
+
+\[(z+1)(z^4+4) = 0\implies z+1 = 0 \text{ or } z^2+4 = 0\]
+\[z+1 = 0 \implies z_0 = -1\]
+\[z^4+4 = 0 \implies z^2 = -4 = -1\cdot 4 = 4 e^{i\left(  \pi+
+      2k\pi\right)},\,\, k\in \Z \implies z =
+  \sqrt{4}e^{i\left(  \frac{\pi}{2}+ k\pi \right)}= \pm 2i\]
+\[z^2+4 = 0 \implies z_1 = 2i,z_2 = -2i\]
+\[z_0 = -1 \implies |-1+1| = 0 <2 \implies z_0\in C\]
+\[z_1 = 2i \implies |2i+1| = |1+2i| = \sqrt{5}\]\[ 4<5 \implies
+  \sqrt{4} = 2< \sqrt{5}  \implies z_1\not\in C\]
+\[z_2 = -2i \implies |-2i+1| = |1-2i| = \sqrt{5} > 2\implies z_2 \not\in C\]
+
+Note, that finding all the zeros of $z^2+4$ gives us the following factorization,
+\[z^4+4 = (z-2i)(z+2i) \]
+\[\text{Then } f(z) = \frac{2z^3+3}{(z+1)(z^2 +4)} = \frac{2z^3+3}{(z+1)(z-2i)(z+2i)}\]
+\begin{align*}\implies \res_{z=-1} f(z) &=
+  \frac{2(-1)^3+3}{(-1 -2i)(-1+2i)}= \frac{1}{5}
+  \end{align*}
+
+So Cauchy's residue theorem gives us that,
+ \begin{align*}\int_C
+  \frac{2z^3+3}{(z+1)(z^2 +4)} dz &= 2\pi i\left( \frac{1}{5}
+                                    \right) = \frac{2\pi }{5}i\end{align*}
+
+(b) find the value of the integral when the curve $C$ is the circle
+$|z|=4$
+
+Since, $|\pm 2i| = 2 < 4$, and $|-1|=1 <4$, we need to
+compute a few more residues.
+
+\begin{sagesilent}
+  var('z', domain = 'complex')
+  f_1(z) = (2*z^3+3)/((z+1)*(z+2*I))
+  r_1 = f_1(2*I)
+  f_2(z) = (2*z^3+3)/((z+1)*(z-2*I))
+  r_2 = f_2(-2*I)
+\end{sagesilent}
+
+
+\begin{align*}\implies \res_{z=2i} f(z) &=
+  \frac{2(2i)^3+3}{(2i +1)(2i+2i)}= \frac{2(2i)^3+3}{(2i +1)2(2i)}=
+                                          \frac{(2i)^2}{1+2i}
+                                          -\frac{3i}{4(1+2i)}\\ &= \frac{-4(1-2i)}{5}
+                                          -\frac{3i(1-2i)}{20}  =
+                                          \frac{-16+32i-3i -6}{20}\\ &=
+                                          \frac{-22+29i}{20}= \sage{r_1.full_simplify()}
+\end{align*}
+
+\begin{align*}\implies \res_{z=-2i} f(z)
+  &=    \frac{2(-2i)^3+3}{(-2i +1)(-2i-2i)}
+  = \frac{2(-2i)^3+3}{2(1-2i)(-2i)}
+  =  \frac{(-2i)^2}{1-2i} +\frac{3}{2(1-2i)(-2i)}\\
+    &=  \frac{(-2i)^2(1+2i)}{5} +\frac{3(1+2i)}{10(-2i)}
+    =  \frac{-4(1+2i)}{5} -\frac{3i(1+2i)}{10(-2)}
+    =  \frac{-16(1+2i)}{20} +\frac{3i(1+2i)}{20}\\
+    &=  \frac{-16(1+2i) +3i(1+2i)}{20}
+    =  \frac{(-16+3i)(1+2i)}{20}
+    =  \frac{(-16-6)+(3 -32)i}{20}
+    =  \frac{-22 -29i}{20}\\
+                                                         &= \sage{r_2.full_simplify()}
+  \end{align*}
+
+
+\begin{sagesilent}
+  var('z', domain = 'complex')
+  f = (2*z^3+3)/((z+1)*(z^2+4))
+  s = f.residue(z==-1)
+  s +=f.residue(z== 2*I)
+  s += f.residue(z== -2*I)
+\end{sagesilent}
+So Cauchy's residue theorem gives us that,
+ \begin{align*}\int_C
+  \frac{2z^3+3}{(z+1)(z^4 +4)} dz &= 2\pi i\left( \frac{1}{5} -\frac{11}{10} +\frac{29}{20}i
+                                    -\frac{11}{10} -\frac{29}{20}i
+                                    \right)\\ &=
+                                                2\pi i\left(
+\frac{2 - 22}{10}                                              \right)
+                                               =
+                                                -4\pi i \quad
+                                                \blacksquare
+ \end{align*}
+
+
+ (c) Give a curve $C$ such that the value of the integral is $0$
+
+ \uwave{slu. }
+
+ Let $C$ be the circle $|z-20| = 1$
+
+ Since, $|1-20| = 19 >1$, and $|\pm 2i - 20| = \sqrt{404} > \sqrt{400}
+ = 20 >1$. So the interior of $C$, not $C$ contain any of the singular points of the
+ integrand, thus the integrand is analytic in and on the circle of radius
+ $1$ centered at $20$. Therefore, \[\int_C
+  \frac{2z^3+3}{(z+1)(z^4 +4)} dz = 0\quad \lozenge\]
+
+\subsubsection*{Problem 4} Problem 4: Show that the image of the right
+half plane Re$(z) > \frac{1}{2}$ , under the mapping $w = \frac{1}{z}$, is the disk
+$|w − 1| < 1 $.
+
+\uwave{slu.}
+
+Let $z$ in the right half plane Re$(z) > \frac{1}{2}$. Then $\exists
+x,y\in \R: z= x +
+iy: x >\frac{1}{2}.$
+
+If $w = u+iv$, then
+\[w = \frac{1}{z} =\frac{1}{x+iy}  = \frac{x-iy}{x^2+y^2} \implies u =
+  \frac{x}{x^2+y^2}\text{ and } v = \frac{-y}{x^2+y^2} \]
+
+\[w = \frac{1}{z} \implies z = \frac{1}{w} \implies x =
+  \frac{u}{u^2+v^2}\text{ and } y = \frac{-v}{u^2+v^2}\]
+
+The general equation for circles an lines in the plane is as follows,
+\[A(x^2+y^2)+Bx + Cy + D = 0\]
+And it gets mapped by $w$ to the $u,v$ plane into the following
+equation,
+\[D(u^2+v^2)+Bu - Cv + A = 0\]
+
+First consider the boundary of the right half plane Re$(z) >
+\frac{1}{2}$. Which is the line $x = \frac{1}{2}$
+
+That is, $A = 0, B=1, C= 0, D=-\frac{1}{2}$ so the image is,
+\[-\frac{1}{2}(u^2+v^2)+u - 0v + 0 = 0\implies u =
+  \frac{1}{2}(u^2+v^2) \implies 2u =
+  u^2+v^2\]
+\[ \implies 0 =
+  u^2-2u +v^2 \implies  1 =
+  u^2-2u + 1 +v^2 \implies  1 =
+  (u- 1)^2 +v^2\]
+
+Which is the circle of radius $1$ centered at $1$.
+
+Now, if $z$ is in the right half plane Re$(z) >
+\frac{1}{2}$. $\forall z:$ Re$ (z) > \frac{1}{2}$, $\exists \varepsilon > 0:$ $z$ lies in the line $x =
+\frac{1}{2} +\varepsilon$. So the image under $w$ lies in the circle,
+\[u =
+  \left(\frac{1}{2}+\varepsilon\right)(u^2+v^2) =
+  \frac{1+\varepsilon}{2}(u^2+v^2)\implies u^2+v^2 =
+  \frac{2}{1+\varepsilon}u \implies u^2-\frac{2}{1+\varepsilon}u +v^2
+  = 0 \]
+\[\implies u^2-\frac{2}{1+\varepsilon}u + \frac{1}{(1+\varepsilon)^2} +v^2
+  = \frac{1}{(1+\varepsilon)^2} \implies  \left(u-\frac{1}{1+\varepsilon}\right)^2 +v^2
+  = \frac{1}{(1+\varepsilon)^2}\]
+Which is the circle of radius $\frac{1}{1+\varepsilon}$ centered
+at $\frac{1}{1+\varepsilon}.$ That is the circle
+$|w-\frac{1}{1+\varepsilon}| = \frac{1}{1+\varepsilon}$.
+The circle $|w -\frac{1}{1+\varepsilon}|=
+\frac{1}{1+\varepsilon}$ has the following parametric representation,
+\[ w = \frac{1}{1+\varepsilon} + \frac{1}{1+\varepsilon} \exp
+  i\theta \quad(0\leq \theta < 2\pi)\]
+
+We want to show that the distance from $\frac{1}{1+\varepsilon} + \frac{1}{1+\varepsilon} \exp
+(i\theta)$ to $1$ is less than  or equal to $1$.
+\[\bigg|\frac{1}{1+\varepsilon} + \frac{1}{1+\varepsilon} \exp
+  (i\theta) -1 \bigg| = \bigg|\frac{1}{1+\varepsilon} -1 +
+  \frac{1}{1+\varepsilon} (\cos \theta +i\sin \theta)\bigg| = \bigg|\frac{1}{1+\varepsilon} -1 +
+  \frac{1}{1+\varepsilon} \cos \theta +i\frac{1}{1+\varepsilon} \sin
+  \theta\,\bigg| \]
+\[= \bigg|\frac{1}{1+\varepsilon}(1+\cos \theta) -1
+  +i\frac{1}{1+\varepsilon} \sin \theta\bigg| = \sqrt{\left(\frac{1}{1+\varepsilon}(1+\cos \theta) -1\right)^2
+  +\frac{1}{(1+\varepsilon)^2}\sin^2\theta}\]
+\[= \sqrt{\frac{1}{(1+\varepsilon)^2}(1+\cos \theta)^2 -2\frac{1}{1+\varepsilon}(1+\cos \theta)+1
+    +\frac{1}{(1+\varepsilon)^2}\sin^2\theta}\]
+\[= \sqrt{\frac{1}{(1+\varepsilon)^2}(1+2\cos \theta + {\color{orange}
+      \cos^2\theta}) -2\frac{1}{1+\varepsilon}(1+\cos \theta)+1
+    +{\color{orange}\frac{1}{(1+\varepsilon)^2}\sin^2\theta}}\]
+\[= \sqrt{{\color{orange}\frac{1}{(1+\varepsilon)^2}} + \frac{1}{(1+\varepsilon)^2}(1+2\cos \theta) -2\frac{1}{1+\varepsilon}(1+\cos \theta)+1}\]
+\[= \sqrt{\frac{1}{(1+\varepsilon)^2} +
+    \frac{1}{(1+\varepsilon)^2}+\frac{2}{(1+\varepsilon)^2}\cos \theta
+    -\frac{2}{1+\varepsilon} -\frac{2}{1+\varepsilon}\cos \theta +1}\]
+\[= \sqrt{\frac{2}{(1+\varepsilon)^2} +\left(\frac{2}{(1+\varepsilon)^2} -\frac{2}{1+\varepsilon}\right)\cos \theta
+    +1-\frac{2}{1+\varepsilon}}\]
+\[= \frac{\sqrt{2 +\left(2 -2(1+\varepsilon)\right)\cos \theta
+    +(1+\varepsilon)^2-2(1+\varepsilon)}}{1+\varepsilon}= \frac{\sqrt{2 +\left(2 -2 -2\varepsilon\right)\cos \theta
+    +1+2\varepsilon + \varepsilon^2-2-2\varepsilon}}{1+\varepsilon}\]
+\[= \frac{\sqrt{\left(-2\varepsilon\right)\cos \theta
+      +1+ \varepsilon^2}}{1+\varepsilon} = \frac{\sqrt{
+      1 -2\varepsilon \cos \theta + \varepsilon^2 }}{1+\varepsilon}\]
+
+Since $-1<\cos \theta < 1 $ when $0\leq \theta <2\pi$, it follows
+that,\[ 0 < \frac{\sqrt{
+       1 -2\varepsilon \cos \theta +\varepsilon^2 }}{1+\varepsilon}\leq \frac{\sqrt{
+      \varepsilon^2 +2\varepsilon +1 }}{1+\varepsilon} =
+  \frac{\sqrt{(1+\varepsilon)^2}}{1+\varepsilon} =
+    \frac{1+\varepsilon}{1+\varepsilon} = 1\]
+
+The distance from the centers is $1$ only when $\theta = \pi$. So, $0$ is a
+common point of the circles. Otherwise, the distance is less than $1$.
+
+So the circle $\big|w-\frac{1}{1+\varepsilon}|=\frac{1}{1+\varepsilon}$
+lies inside the circle $|w-1|=1$. Since every $w(z):$ Re $z$, lies in the
+image of one of such lines. Then the right half plane Re$(z) >\frac{1}{2}$ lies inside
+the disk $|w-1|<1\quad \blacksquare$
+\newpage
+\subsubsection*{Extra Credit Problem } Show that all four zeros of the polynomial $g(z) = z^4 - 7z - 1$ lie in the disk $|z| < 2$
+
+\uwave{slu.}
+Let $C$ be the circle $|z|=2$. Let $p(z) = z^4$, $q(z)=
+-7z-1$. Notice, $g = p + q $ then if $z \in C$,
+\[|p(z)|< |z|^4 = 2^4 =16 \text{ and }|q(z)| < 7|z|+1 = 2\cdot 7 +1 = 15\]
+\[\implies \forall z\in \C, |q(z)|<|p(z)|\]
+Both $p(z)$, and $q(z)$ are polynomials, so they're entire. So they're
+analytic in the closed disk $|z|leq 2$. Therefore by Rouché's theorem,
+$p(z)$ and $g(z)$ have the same number of zeros counting
+multiplicities inside $C$. So, all four zeros of $g$ lie in the disk
+$|z|<2\quad \lozenge$
+
+\subsubsection*{Extra Credit {\color{orange} STAR PROBLEM}} Show that
+the parabola $2x = 1 − y^2$ is mapped onto the cardioid $ρ = 1 + \cos
+\phi$ by the reciprocal transformation $w = \frac{1}{z}$.
+
+\uwave{slu.}
+
+Let $z\in \C: \exists x,y \in \R: z = x+iy$, then
+\[x = \frac{z+\bar{z}}{2}\text{ and }y = \frac{z-\bar{z}}{2i}\]
+\[\implies y^2 = \left(\frac{z-\bar{z}}{2i}\right)^2 =
+  \frac{z^2-2z\bar{z}+\bar{z}^2}{-4}\]
+\[\implies -y^2 = -\left(\frac{z-\bar{z}}{2i}\right)^2\]
+\[2x = 1 − y^2 \iff 2\frac{z+\bar{z}}{2} = 1 -\left(\frac{z-\bar{z}}{2i}\right)^2 \]
+Let $z = \rho e^{i\phi},\,\, (0\leq \phi < 2\pi)\implies \bar{z} =
+\rho e^{-i\phi}$ and plug in,
+\[\implies 2\frac{\rho e^{i\phi}+ \rho e^{-i\phi}}{2} = 1 -\left(\frac{\rho
+      e^{i\phi}-\rho e^{-i\phi}}{2i}\right)^2 \implies 2\rho\frac{e^{i\phi}+e^{-i\phi}}{2} = 1 -\rho^2\left(\frac{
+      e^{i\phi}- e^{-i\phi}}{2i}\right)^2\]
+\[\implies 2\rho \cos \phi = 1 -\rho^2\sin^2\phi \implies 2\rho \cos
+  \phi = 1 -\rho^2(1-\cos^2 \phi)\]
+\[\implies \rho^2(1-\cos^2 \phi) +2\rho\cos
+  \phi = 1 \implies \rho^2 +2\rho\cos
+  \phi -\rho^2\cos^2 \phi  = 1 \]
+\[\implies (\rho-\cos\phi)^2 = 1 \implies \rho-\cos \phi = 1 \]\
+\[\implies\rho = 1 + \cos \phi\quad \blacksquare\]
+\newpage
+\subsubsection*{Appendix}
+
+I misread the exam and solved the following problem, I'll leave it
+here for your amusement.
+
+Consider the integral \[\int_C
+  \frac{2z^3+3}{(z+1)(z^{\color{cyan} 4} +4)} dz\] taken counterclockwise around the
+curve $C$
+
+(a) Find the value of the integral when the curve $C$ is the circle
+${\color{green}|z + 1| = 2}$
+
+\uwave{slu.}
+
+\[(z+1)(z^4+4) = 0\implies z+1 = 0 \text{ or } z^4+4 = 0\]
+\[z+1 = 0 \implies z_0 = -1\]
+\[z^4+4 = 0 \implies z^4 = -4 = -1\cdot 4 = 4 e^{i\left(  \pi+
+      2k\pi\right)},\,\, k\in \Z \implies z =
+  \sqrt{2}e^{i\left(  \frac{\pi}{4}+ \frac{k\pi}{2} \right)}= \pm(1\pm
+  i)\]
+\[z^4+4 = 0 \implies z_1 = 1+i,z_2 = -1+i, z_3 = -1-i, z_4 = 1-i\]
+\[z_0 = -1 \implies |-1+1| = 0 <2 \implies z_0\in C\]
+\[z_1 = 1+i \implies |1+i+1| = |2+i| = \sqrt{5}\]\[ 4<5 \implies
+  \sqrt{4} = 2< \sqrt{5}  \implies z_1\not\in C\]
+\[z_2 = -1+i \implies |-1+i+1| = |i| = 1 < 2\implies z_2 \in C\]
+\[z_3 = -1-i \implies |-1-i+1| = |-i| = 1 < 2\implies  z_3 \in C\]
+\[z_4 = 1-i \implies |1-i+1| = |2-i| = \sqrt{5} > 2\implies z_4
+  \not\in C\]
+Note, that finding all the zeros of $z^4+4$ gives us the following factorization,
+\[z^4+4 = (z-(1+i))(z-(-1+i))(z-(-1-i))(z-(1-i)) \]
+\[\text{Then } f(z) = \frac{2z^3+3}{(z+1)(z^4 +4)} = \frac{2z^3+3}{(z+1)(z-(1+i))(z-(-1+i))(z-(-1-i))(z-(1-i))}\]
+\begin{align*}\implies \res_{z=-1} f(z) &=
+  \frac{2(-1)^3+3}{(-1-(1+i))(-1-(-1+i))(-1-(-1-i))(-1-(1-i))}\\ &=
+  \frac{1}{(-2-i)(-i)(i)(-2+i)}=  \frac{1}{((-2)^2-i^2)} \\&= \frac{1}{5}\end{align*}
+\begin{align*}\implies \res_{z=-1+i} f(z) &=
+                                       \frac{2(-1+i)^3+3}{(-1+i+1)(-1+i-(1+i))(-1+i-(-1-i))(-1+i-(1-i))}\\
+                                     &=\frac{2(-1+i)^3+3}{i(-2)(2i)(-2+2i)}
+                                     =\frac{2(-1+i)(-2i)+3}{i(-2)(2i)(-2+2i)}
+                                     =\frac{2(2i+2)+3}{i(-2)(2i)(-2+2i)}\\
+                                     &=\frac{7+4i}{i(-2)(2i)(-2+2i)}
+                                     =\frac{7+4i}{4(-2+2i)}
+                                       =\frac{7+4i}{-8+8i}
+  = \frac{(7+4i)(-8-8i)}{128}\\  &=  \frac{-56 + 32 + (-32-56)i}{128} =
+    \frac{-24 -88i}{128} = -\frac{24}{128} -\frac{88}{128}i \\
+  &= -\frac{3}{16} - \frac{11}{16}i
+\end{align*}
+\begin{align*}\implies \res_{z=-1-i} f(z)
+  &= \frac{2(-1-i)^3+3}{(-1-i+1)(-1-i-(1+i))(-1-i-(-1+i))(-1-i-(1-i))}\\
+  &=\frac{2(-1-i)^3+3}{-i(-2-2i)(-2i)(-2)}
+    =\frac{2(-1-i)^3+3}{i(2+2i)(2i)(2)}
+    =\frac{2(-1-i)^3+3}{-4(2+2i)}
+    =\frac{2(-1-i)^3+3}{-8-8i}\\
+  &=\frac{2(-1-i)^3+3}{8(-1-1i)} =\frac{(-1-i)^2}{4}
+    +\frac{3}{8(-1-i)} = \frac{2i}{4}
+    +\frac{3(-1+i)}{16}  = \frac{i}{2}
+    +\frac{3(-1+i)}{16} = -\frac{3}{16}+ \frac{11}{16}i
+\end{align*}
+
+So Cauchy's residue theorem gives us that,
+ \begin{align*}\int_C
+  \frac{2z^3+3}{(z+1)(z^4 +4)} dz &= 2\pi i\left( \frac{1}{5}
+    -\frac{3}{16} - \frac{11}{16}i -\frac{3}{16} + \frac{11}{16}i \right)\\&= 2\pi i\left( \frac{1}{5}
+    -\frac{6}{16} \right) = 2\pi i\left( \frac{16-30}{80} \right)\\ &=
+  \pi i\left( \frac{-14}{40} \right)\\ &= -\frac{7\pi}{20}i\end{align*}
+
+(b) find the value of the integral when the curve $C$ is the circle
+$|z|=4$
+
+Since, $|\pm(1\pm i)| = \sqrt{2} < 4$, and $|-1|<4$, we need to
+compute a few more residues.
+
+\begin{align*}\implies \res_{z=1+i} f(z)
+  &=  \frac{2(1+i)^3+3}{(1+i+1)(1+i-(-1+i))(1+i-(-1-i))(1+i-(1-i))}\\
+  &=  \frac{2(1+i)^3+3}{(2+i)(2)(2+2i)(2i)} =
+    \frac{(1+i)^2}{4i(2+i)}-\frac{3i}{8(2+i)(1+i)} =
+    \frac{2i}{4i(2+i)}-\frac{3i}{8(1+3i)}\\&=
+    \frac{2-i}{10}-\frac{3i(1-3i)}{80}
+  =  \frac{2-i}{10}-\frac{9+3i}{80} =  \frac{16-8i-(9+3i)}{80}\\ &=
+  \frac{7}{80}-\frac{11}{80}i
+\end{align*}
+
+
+\begin{align*}\implies \res_{z=1-i} f(z)
+  &=  \frac{2(1-i)^3+3}{(1-i+1)(1-i-(-1+i))(1-i-(-1-i))(1-i-(1+i))}\\
+  &=  \frac{2(1-i)^3+3}{(2-i)(2-2i)(2)(-2i)}=
+    \frac{2(1-i)^3+3}{(2-i)(1-i)(-8i)} = \frac{-2i}{(2-i)(-4i)} +
+    \frac{3i}{8(2-i)(1-i)}\\
+    &= \frac{1}{2(2-i)} + \frac{3i}{8(1-3i)} = \frac{2+i}{10} +
+      \frac{3i(1+3i)}{80} = \frac{2+i}{10}
+      -\frac{9-3i}{80} = \frac{16+8i - 9+3i}{80}\\ &= \frac{7}{80} +\frac{11}{80}i
+\end{align*}
+\begin{sagesilent}
+  var('z', domain = 'complex')
+  f = (2*z^3+3)/((z+1)*(z^4+4))
+  s = f.residue(z==-1)
+  s +=f.residue(z== -1+I)
+  s += f.residue(z== -1-I)
+  s += f.residue(z== 1-I)
+  s += f.residue(z== 1+I)
+\end{sagesilent}
+So Cauchy's residue theorem gives us that,
+ \begin{align*}\int_C
+  \frac{2z^3+3}{(z+1)(z^4 +4)} dz &= 2\pi i\left( \frac{16-30}{80}
+                                    +\frac{7}{80}-\frac{11}{80}i +
+                                    \frac{7}{80}+\frac{11}{80}i
+                                    \right)\\ &=
+                                                2\pi i\left(
+                                                \frac{16+14-30}{80}
+                                                \right) = \sage{2*pi*I*s} \quad
+                                                \blacksquare
+ \end{align*}
+
+
+ (c) Give a curve $C$ such that the value of the integral is $0$
+
+ \uwave{slu. } Let $C$ be the circle $|z| = 4\quad \lozenge$
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

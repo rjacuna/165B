@@ -1,0 +1,130 @@
+\documentclass{article}
+\usepackage{fontspec}
+
+% Used to embed Sage code in latex
+\usepackage{sagetex}
+
+% Physics Environment
+\usepackage{physics}        % Physics symbols
+
+% Math Environment
+\usepackage{euler}        % Euler font
+\usepackage{amsmath}      % Math macros
+\usepackage{amssymb}      % Math symbols
+\usepackage{unicode-math} % Unicode support
+
+% Physics Environment
+\usepackage{physics}        % Physics symbols
+
+\usepackage[makeroom]{cancel} % Used to cancel terms in algebraic equations
+\usepackage{ulem} % Different underline environments
+\usepackage{polynom} %Polynomial long division
+
+% Typesetting Rules
+\setlength\parindent{0em}
+\setlength\parskip{0.618em}
+\usepackage[a4paper,lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+\setmainfont[Mapping=tex-text]{Helvetica Neue LT Std 45 Light}
+
+% Common Macros
+\newcommand\N{\mathbb{N}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\R{\mathbb{R}}
+\newcommand\C{\mathbb{C}}
+\newcommand\A{\mathbb{A}}
+\def\res{\mathop{\text{Res}}\limits}
+
+% Color
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pagecolor}
+\definecolor{DeepCyan}{HTML}{006969}
+\definecolor{DeepRed}{HTML}{690000}
+\pagecolor{DeepCyan}
+\color{white}
+
+\begin{document}
+
+\begin{center}
+  MATH 165B - Introduction to
+
+  Complex Variables
+\end{center}\vspace{1.618em}
+
+Names:
+\begin{enumerate}
+\item Ricardo Jaime Acuna
+  \end{enumerate}
+Topic: An interactive exploration of complex valued mappings through
+visualizations of the Riemann Sphere
+
+Sub Topics:
+\begin{enumerate}
+  \item Stereographic Projection.
+  \item M\"obius Transformations.
+  \item Conformal Mappings.
+  \item Computer Graphics.
+\end{enumerate}
+
+Problem:
+
+I want to make a web application that allows one to visualize M\"obius
+transformations, and Conformal Mappings by Stereographic Projection
+of the Riemann Sphere onto the Complex Plane.
+
+Following the video Möbius Transformations Revealed  by Douglas Arnold
+and Jonathan Rogness, I want to shine a light atop of the Riemann
+Sphere that will cast rays through the surface of the sphere onto the
+Complex Plane.
+
+The semi-transparent grid of the sphere will then be
+projected onto the plane, the shadow of the sphere on the plane will
+transform
+with the sphere as the sphere gets rotated and inverted.
+
+Then we
+will be able to apply a conformal map to the grid and see the image of
+the mapping both on the plane and on the sphere, and see what happens
+under m\"obius transformation to the image of the conformal map.
+
+Another possible turn of this project is to see conformal mappings as
+wrappings of the plane onto surfaces. Like when you
+see yourself in a fun house mirror.
+
+Computations:
+
+I will use the computer language Clojurescript, and the
+rendering library Reagent, together with a wrapper of three.js called
+threeagent that allows me to make WebGl powered 3D applications that
+run in web browsers. On the server side, I will use static web hosting through Amazon Web
+Services buckets.
+
+You will find the code at: https://www.github.com/rjacuna/sphere
+
+You will find the application at: http://www.drakezhard.org
+
+Bibliography:
+
+Trott, M. The Mathematica GuideBook for Programming. New York:
+Springer-Verlag, 2004.
+
+Kythe, P. K. Computational Conformal Mapping. Boston, MA: Birkhäuser, 1998.
+
+Needham, T. Visual Complex Analysis. Clarendon Press, 1998
+
+Communications and Work Group Plan:
+
+1. I will constantly remind my right
+hemisphere to get this done. I'll leave the homework to the left
+hemisphere for the remainder of the quarter.
+
+2. The files will be uploaded to github.com/rjacuna, and
+drakezhard.org as soon as any progress is made.
+
+3. Math will be at the center of everything. In fact If I don't use
+math in this project I won't be able to get anything done.
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
